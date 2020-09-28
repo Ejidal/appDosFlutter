@@ -4,17 +4,17 @@
         {
             "ruta" : "alert",
             "icon" : "add_alert",
-            "texto": "Alertas"
+            "texto": "Bikini Top"
         },
         {
             "ruta" : "avatar",
             "icon" : "accessibility",
-            "texto": "Avatars"
+            "texto": "Sandals"
         },
         {
             "ruta" : "card",
             "icon" : "folder_open",
-            "texto": "Cards - Tarjetas"
+            "texto": "Pareos"
         }
     ]
 }

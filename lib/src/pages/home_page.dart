@@ -56,7 +56,7 @@ List<Widget>_listaItems(List<dynamic> data){
 					color:Colors.pink),//TextStyle
 			),//Text
 			leading:Icon(Icons.accessibility,
-				color:Colors.pink,
+				color:Colors.green,
 				size:40.0,
 			),//Icon
 			trailing:Icon(Icons.keyboard_arrow_right,
