@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:appDos/src/providers/menu_provider.dart';
 
 
 class HomePage extends StatelessWidget {
@@ -19,67 +20,62 @@ class HomePage extends StatelessWidget {
 						color: Colors.pink),//TextStyle
 					),//Text
 			),//AppBar
-	        body: ListView(
-				children: _articulosPlayeros(),
-			),//ListView
+	        body: _articulosPlayeros(),
 	   );//Scaffold
 	}//build
-//-------------------------------------------------------------
-	List<Widget> _crearItems() { 
-		List<Widget> lista = new List<Widget>();
 
-		for (String opt in opciones){
-			final tempWidget = ListTile(
-				title:Text(opt),
-				);//ListTitle
+///-------------------------------------------------------------
+Widget _articulosPlayeros() { 
+	return FutureBuilder(
+		future:menuProvider.cargarData(),
+		initialData:[],
+		builder:(context, AsyncSnapshot<List<dynamic>> snapshot){ 
+			return ListView(
+				children: _listaItems(snapshot.data),
+			);//ListView
+		},//builder
+	);//FutureBuilder
+}//_articulosPlayeros
+///-------------------------------------------------------------
 
-				lista.add(tempWidget);
-				lista.add(Divider());
-			}//opciones
-		return lista;
+List<Widget>_listaItems(List<dynamic> data){ 
+	
+	final List<Widget> opciones = [];
+	data.forEach((opt){
 
-	}//_crearItems
-//-------------------------------------------------------------
-	List<Widget> _articulosPlayeros() { 
+		final widgetTemp = ListTile( 
+			title:Text(opt['texto'],
+				style:TextStyle( 
+					fontSize:20,
+					color:Colors.cyan,
+				),//TextStyle
+			),//Text
+			subtitle:Text('ChipoCluda',
+				style:TextStyle(
+					fontSize:10,
+					color:Colors.pink),//TextStyle
+			),//Text
+			leading:Icon(Icons.accessibility,
+				color:Colors.pink,
+				size:40.0,
+			),//Icon
+			trailing:Icon(Icons.keyboard_arrow_right,
+				color:Colors.yellow,
+				size:50.0,
+			),//Icon
+		);//ListTile
 
-		return opciones.map((item) { 
-
-			return Column(
-				children:<Widget>[
-					ListTile( 
-						title:Text(item,
-							style:TextStyle( 
-								fontSize:20,
-								color:Colors.cyan,
-							),//TextStyle
-						),//Text
-						subtitle:Text('ChipoCluda',
-							style:TextStyle(
-								fontSize:10,
-								color:Colors.pink),//TextStyle
-						),//Text
-						leading:Icon(Icons.accessibility,
-							color:Colors.pink,
-							size:40.0,
-						),//Icon
-						trailing:Icon(Icons.keyboard_arrow_right,
-							color:Colors.yellow,
-							size:50.0,
-						),//Icon
-					),//ListTile
-					Divider(
-						height:10,
-						indent:20,
-						endIndent:20,
-						thickness: 2,
-						color:Colors.yellow,
-					),//Divider
-				],//Widget
-			);//Column
-
-		}).toList();//opciones.map
-		
-	}//_articulosPlayeros
-//-------------------------------------------------------------
-
+	opciones..add(widgetTemp);
+	opciones..add(
+		Divider(
+			height:10,
+			indent:20,
+			endIndent:20,
+			thickness: 2,
+			color:Colors.yellow,
+		),//Divider
+	);//add		
+	});//data
+	return opciones;
+}//_listaItems
 }//HomePage
