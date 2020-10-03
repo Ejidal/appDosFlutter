@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:appDos/src/providers/menu_provider.dart';
-
+import 'package:appDos/src/utils/icono_string_util.dart';
 
 class HomePage extends StatelessWidget {
 	final opciones = ['Top Bikini', 
@@ -55,10 +55,8 @@ List<Widget>_listaItems(List<dynamic> data){
 					fontSize:10,
 					color:Colors.pink),//TextStyle
 			),//Text
-			leading:Icon(Icons.accessibility,
-				color:Colors.green,
-				size:40.0,
-			),//Icon
+			leading:getIcon(opt['icon']),
+			
 			trailing:Icon(Icons.keyboard_arrow_right,
 				color:Colors.yellow,
 				size:50.0,

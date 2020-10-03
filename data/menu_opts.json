@@ -3,7 +3,7 @@
     "rutas" : [
         {
             "ruta" : "alert",
-            "icon" : "add_alert",
+            "icon" : "emoji_people",
             "texto": "Bikini Top"
         },
         {
@@ -13,7 +13,7 @@
         },
         {
             "ruta" : "card",
-            "icon" : "folder_open",
+            "icon" : "directions_run",
             "texto": "Pareos"
         }
     ]
